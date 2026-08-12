@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets
+.env
+
+# macOS
+.DS_Store
+
+# Frontend
+node_modules/
+
+# Terraform generated files
+.terraform/
+*.tfstate
+*.tfstate.*
