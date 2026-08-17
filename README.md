@@ -105,3 +105,6 @@ These ideas can be considered only after the Lite MVP is complete.
 - Task data model created
 - Input validation implemented
 - Automated Task model tests passing
+- Credit wallet model created
+- Welcome, reservation, and cancellation rules implemented
+- Automated Wallet model tests passing
