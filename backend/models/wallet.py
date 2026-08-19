@@ -46,3 +46,21 @@ class Wallet(BaseModel):
 
         self.reserved_credits -= amount
         self.available_credits += amount
+    def spend_reserved(self, amount: int) -> None:
+        """Consume credits reserved for a completed task."""
+
+        if amount <= 0:
+            raise ValueError("Payment amount must be greater than zero")
+
+        if amount > self.reserved_credits:
+            raise ValueError("Insufficient reserved credits")
+
+        self.reserved_credits -= amount
+
+    def credit(self, amount: int) -> None:
+        """Add earned task credits to the available balance."""
+
+        if amount <= 0:
+            raise ValueError("Credit amount must be greater than zero")
+
+        self.available_credits += amount

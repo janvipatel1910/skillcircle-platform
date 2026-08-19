@@ -108,3 +108,6 @@ These ideas can be considered only after the Lite MVP is complete.
 - Credit wallet model created
 - Welcome, reservation, and cancellation rules implemented
 - Automated Wallet model tests passing
+- Task assignment and submission lifecycle implemented
+- Requester-only task completion implemented
+- Reserved rewards transferred to helpers exactly once
