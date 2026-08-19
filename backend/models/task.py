@@ -39,3 +39,25 @@ class Task(TaskCreate):
     created_at: datetime = Field(
         default_factory=lambda: datetime.now(timezone.utc)
     )
+    def assign(self, helper_id: UUID) -> None:
+        """Assign an open task to a helper."""
+
+        if self.status is not TaskStatus.OPEN:
+            raise ValueError("Only open tasks can be assigned")
+
+        if helper_id == self.requester_id:
+            raise ValueError("Requester cannot help their own task")
+
+        self.helper_id = helper_id
+        self.status = TaskStatus.ASSIGNED
+
+    def submit(self, helper_id: UUID) -> None:
+        """Mark an assigned task as submitted by its helper."""
+
+        if self.status is not TaskStatus.ASSIGNED:
+            raise ValueError("Only assigned tasks can be submitted")
+
+        if helper_id != self.helper_id:
+            raise ValueError("Only the assigned helper can submit this task")
+
+        self.status = TaskStatus.SUBMITTED
